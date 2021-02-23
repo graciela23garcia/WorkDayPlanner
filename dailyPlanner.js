@@ -90,34 +90,16 @@ function calendar() {
     }
 }
 
-//get from store
 function getFromLocalStorage() {
     for (let t = 0; t < time.length; t++) {
-        let period = function () {
-            if (time[t] < 5 || time[t] == 12) {
-                return "pm";
-            } else {
-                return "am";
-            }
-        };
-        let savedEvent = localStorage.getItem(`${time[t]}:00${period()}`);
-        $(`.input${time[t]}`).attr("value", savedEvent);
+      let period = function () {
+        if (time[t] < 5 || time[t] == 12) {
+          return "pm";
+        } else {
+          return "am";
+        }
+      };
+      let savedEvent = localStorage.getItem(`${time[t]}:00${period()}`);
+      $(`.input${time[t]}`).attr("value", savedEvent);
     }
-}
-
-//set to the store
-function setToLocalStorage() {
-    for (let t = 0; t < time.length; t++) {
-        let period = function () {
-            if (time[t] < 5 || time[t] == 12) {
-                return "pm";
-            } else {
-                return "am";
-            }
-        };
-        $(`.saveBtn${time[t]}`).click(function () {
-            let event = $(`.input${time[t]}`).val();
-            localStorage.setItem(`${time[t]}:00${period()}`, event);
-        });
-    }
-}
+  }
